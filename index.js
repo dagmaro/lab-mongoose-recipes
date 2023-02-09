@@ -134,11 +134,24 @@ mongoose
     console.log(response);
   })
   .then(() => {
-    return Recipe.findOneAndUpdate({title: "Rigatoni alla Genovese"}, {duration: 100})
+    return Recipe.findOneAndUpdate(
+      { title: "Rigatoni alla Genovese" },
+      { duration: 100 }
+    );
   })
   .then(() => {
     console.log("Successfully updated");
   })
+  .then((response) => {
+    return Recipe.findOneAndDelete({ title: "Carrot Cake" });
+  })
+  .then(() => {
+    console.log("Successfully deleted");
+  })
   .catch((error) => {
     console.error("Error connecting to the database", error);
   });
+
+mongoose.connection.close(() => {
+  console.log("Mongoose connection closed");
+});
