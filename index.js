@@ -134,7 +134,7 @@ mongoose
     console.log(response);
   })
   .then(() => {
-    return Recipe.findOneAndUpdate({name: "Rigatoni alla Genovese"}, {duration: 100})
+    return Recipe.findOneAndUpdate({title: "Rigatoni alla Genovese"}, {duration: 100})
   })
   .then(() => {
     console.log("Successfully updated");
